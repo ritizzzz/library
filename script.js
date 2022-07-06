@@ -15,7 +15,9 @@ Book.prototype.readStatus = function() {
     }
 }
 
-
+document.querySelector('.addbook').addEventListener('click', ()=>{
+    document.querySelector('form').style.transform = 'scale(1)';
+})
 function addBookToLibrary() {
   // do stuff here
 }

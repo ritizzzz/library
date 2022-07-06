@@ -67,6 +67,7 @@ footer{
 /* form */
 
 
+
 input[type = 'checkbox']{
     margin: 0px;
     width: max-content;
@@ -80,10 +81,13 @@ input:not(input[type='checkbox']){
     border: 1px solid #999;
 }
 
+
+
+
 form{
-    margin: 100px auto;
+    z-index: 3;
     width: 400px;
-    /* Form outline */
+ 
     padding: 1em;
     border: 1px solid #CCC;
     border-radius: 1em;
@@ -91,11 +95,13 @@ form{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transform: scale(0);
+
 }
 
-form:hover{
-    transform: scale(1);
-}
+
 
 .form-row{
     display: flex;
