@@ -16,8 +16,10 @@ Book.prototype.readStatus = function() {
 }
 
 document.querySelector('.addbook').addEventListener('click', ()=>{
-    document.querySelector('form').style.transform = 'scale(1)';
+    document.querySelector('form').style.transform = 'scale(1) translate(-50%, -50%)';
 })
+
+
 function addBookToLibrary() {
   // do stuff here
 }
