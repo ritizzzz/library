@@ -1,17 +1,32 @@
 let myLibrary = [];
+let elements = {
+  openFormButton: document.querySelector('.openForm'),
+  overlay: document.querySelector('.overlay'),
+  form: document.querySelector('form'),
+  remove: document.querySelector('.removeBook')
+}
 
 
 
-document.querySelector('.openForm').addEventListener('click', ()=>{
-  document.querySelector('form').style.transform = 'scale(1)';  
-  document.querySelector('.overlay').classList.add('overlay-active');
-})
 
-document.querySelector('.overlay').addEventListener('click', ()=>{
-  document.querySelector('form').style.transform = 'scale(0)';  
-  document.querySelector('.overlay').classList.remove('overlay-active');
-})
+
+elements.openFormButton.addEventListener('click', openForm)
+
+elements.overlay.addEventListener('click', closeForm)
  
+
+function openForm(){
+  elements.form.style.transform = 'scale(1)';  
+  elements.overlay.classList.add('overlay-active');
+}
+
+function closeForm(){
+  elements.form.style.transform = 'scale(0)';  
+  elements.overlay.classList.remove('overlay-active');
+}
+
+
+
 
 
 function Book(title, author, pages, read) {
