@@ -2,7 +2,7 @@ let myLibrary = [];
 
 
 
-document.querySelector('.addbook').addEventListener('click', ()=>{
+document.querySelector('.openForm').addEventListener('click', ()=>{
   document.querySelector('form').style.transform = 'scale(1)';  
   document.querySelector('.overlay').classList.add('overlay-active');
 })
