@@ -3,7 +3,7 @@ let myLibrary = [];
 
 
 document.querySelector('.addbook').addEventListener('click', ()=>{
-  document.querySelector('form').style.transform = 'scale(1) translate(-50%, -50%)';  
+  document.querySelector('form').style.transform = 'scale(1)';  
   document.querySelector('.overlay').classList.add('overlay-active');
 })
 
