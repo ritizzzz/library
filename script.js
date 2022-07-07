@@ -1,5 +1,19 @@
 let myLibrary = [];
 
+
+
+document.querySelector('.addbook').addEventListener('click', ()=>{
+  document.querySelector('form').style.transform = 'scale(1) translate(-50%, -50%)';  
+  document.querySelector('.overlay').classList.add('overlay-active');
+})
+
+document.querySelector('.overlay').addEventListener('click', ()=>{
+  document.querySelector('form').style.transform = 'scale(0)';  
+  document.querySelector('.overlay').classList.remove('overlay-active');
+})
+ 
+
+
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -15,9 +29,7 @@ Book.prototype.readStatus = function() {
     }
 }
 
-document.querySelector('.addbook').addEventListener('click', ()=>{
-    document.querySelector('form').style.transform = 'scale(1) translate(-50%, -50%)';
-})
+
 
 
 function addBookToLibrary() {
