@@ -38,6 +38,11 @@ function addBookToLibrary() {
   closeForm();
   createCards();
 }
+
+function changeReadStatus(event){
+  myLibrary[event.target.parentNode.getAttribute('data-index')].readStatus();
+}
+
 function deleteCards(){
   elements.cardcontainer.innerHTML = '';
 }
@@ -45,6 +50,7 @@ function deleteCards(){
 function removeCard(event){
   myLibrary.splice(event.target.parentNode.getAttribute('data-index'), 1);
   event.target.parentNode.remove();
+  createCards();
 }
 
 function createCards(){
@@ -85,6 +91,7 @@ function createCards(){
 
     let read = document.createElement('input');
     read.setAttribute('type', 'checkbox');
+    read.addEventListener('change', changeReadStatus)
     if(myLibrary[i].read){
       read.checked = true;
     }
@@ -99,6 +106,7 @@ function createCards(){
     elements.cardcontainer.appendChild(div);
   }
 }
+
 
 
 function Book(title, author, pages, read) {
