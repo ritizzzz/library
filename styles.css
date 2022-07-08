@@ -169,7 +169,7 @@ button:active{
     display: grid;
     padding: 50px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    row-gap: 10px;
+    gap: 10px;
     justify-items: center;
 }
 
@@ -177,12 +177,13 @@ p{
     word-wrap: break-word;
 }
 .card{
-    width: 200px;
+    width: 100%;
+    box-sizing: border-box;
     display: grid;
     border: 2px solid black;
-    grid-template-columns: max-content 100px;
+    grid-template-columns: max-content 1fr;
     gap: 30px 10px;
-    padding: 20px 40px;
+    padding: 5px;
 }
 
 .card>h3{

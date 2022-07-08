@@ -48,49 +48,50 @@ function deleteCards(){
 function createCards(){
   deleteCards();
   for(let i = 0; i<= myLibrary.length; i++){
-    const div = document.createElement('div');
+    console.log(myLibrary[i])
+    let div = document.createElement('div');
     div.classList.add('card'); 
     
-    const title = document.createElement('h3');
+    let title = document.createElement('h3');
     title.innerText = 'Title:';
     div.appendChild(title);
     
-    const ptitle = document.createElement('p');
+    let ptitle = document.createElement('p');
     ptitle.innerText = myLibrary[i].title;
     div.appendChild(ptitle);
     
-    const author = document.createElement('h3');
+    let author = document.createElement('h3');
     author.innerText = 'Author:';
     div.appendChild(author);
 
-    const authorp = document.createElement('p');
+    let authorp = document.createElement('p');
     authorp.innerText = myLibrary[i].author;
     div.appendChild(authorp);
 
-    const pages = document.createElement('h3');
+    let pages = document.createElement('h3');
     pages.innerText = `Pages:`;
     div.appendChild(pages);
 
-    const pagesp = document.createElement('p');
+    let pagesp = document.createElement('p');
     pagesp.innerText = myLibrary[i].pages;
     div.appendChild(pagesp);
 
 
-    const readText = document.createElement('h3');
+    let readText = document.createElement('h3');
     readText.innerText = 'Read:';
     div.appendChild(readText);
 
-    const read = document.createElement('input');
+    let read = document.createElement('input');
     read.setAttribute('type', 'checkbox');
     if(myLibrary[i].read){
       read.checked = true;
     }
     div.appendChild(read);
 
-    const button = document.createElement('button');
+    let button = document.createElement('button');
     button.innerText = 'Remove';
-    button.classList.add('.removeBook');
-    div.appendChild(button);
+    button.classList.add('removeBook');
+    div.appendChild(button)
 
     elements.cardcontainer.appendChild(div);
   } 
