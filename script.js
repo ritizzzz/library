@@ -3,16 +3,22 @@ let elements = {
   openFormButton: document.querySelector('.openForm'),
   overlay: document.querySelector('.overlay'),
   form: document.querySelector('form'),
-  remove: document.querySelector('.removeBook')
+  remove: document.querySelector('.removeBook'),
+  addbook: document.querySelector('.addBook')
+}
+elements.openFormButton.addEventListener('click', openForm)
+elements.overlay.addEventListener('click', closeForm)
+elements.addbook.addEventListener('click', addBookToLibrary)
+
+let formValues = {
+  title: document.querySelector('#title'),
+  author: document.querySelector('#author'),
+  pages: document.querySelector('#pages'),
+  read: document.querySelector('#read')
 }
 
 
 
-
-
-elements.openFormButton.addEventListener('click', openForm)
-
-elements.overlay.addEventListener('click', closeForm)
  
 
 function openForm(){
@@ -26,6 +32,10 @@ function closeForm(){
 }
 
 
+function addBookToLibrary() {
+  myLibrary.push(new Book(formValues.title.value, formValues.author.value, formValues.pages.value, formValues.read.checked))
+  closeForm();
+}
 
 
 
@@ -47,6 +57,3 @@ Book.prototype.readStatus = function() {
 
 
 
-function addBookToLibrary() {
-  // do stuff here
-}
