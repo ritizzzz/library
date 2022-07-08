@@ -3,7 +3,6 @@ let elements = {
   openFormButton: document.querySelector('.openForm'),
   overlay: document.querySelector('.overlay'),
   form: document.querySelector('form'),
-  remove: document.querySelector('.removeBook'),
   addbook: document.querySelector('.addBook'),
   cardcontainer: document.querySelector('.card-container'),
 }
@@ -39,18 +38,21 @@ function addBookToLibrary() {
   closeForm();
   createCards();
 }
-
-
 function deleteCards(){
   elements.cardcontainer.innerHTML = '';
 }
 
+function removeCard(event){
+  myLibrary.splice(event.target.parentNode.getAttribute('data-index'), 1);
+  event.target.parentNode.remove();
+}
+
 function createCards(){
   deleteCards();
-  for(let i = 0; i<= myLibrary.length; i++){
-    console.log(myLibrary[i])
+  for(let i = 0; i< myLibrary.length; i++){
     let div = document.createElement('div');
-    div.classList.add('card'); 
+    div.classList.add('card');
+    div.dataset.index = i; 
     
     let title = document.createElement('h3');
     title.innerText = 'Title:';
@@ -91,10 +93,11 @@ function createCards(){
     let button = document.createElement('button');
     button.innerText = 'Remove';
     button.classList.add('removeBook');
+    button.addEventListener('click', removeCard);
     div.appendChild(button)
 
     elements.cardcontainer.appendChild(div);
-  } 
+  }
 }
 
 
