@@ -5,7 +5,7 @@ let elements = {
   form: document.querySelector('form'),
   addbook: document.querySelector('.addBook'),
   cardcontainer: document.querySelector('.card-container'),
-  inputs: document.querySelectorAll('input')
+  inputs: document.querySelectorAll('.input')
 }
 
 let patterns = {
@@ -30,9 +30,9 @@ elements.inputs.forEach(input => {
   input.addEventListener('keyup', ()=>{
     
     if(!validate(input, patterns[input.name])){
-      input.style.border = '1px solid red'; 
+      document.querySelector(`.error-${input.name}`).classList.add('error-active');
     }else{
-      input.style.border = '1px solid #999';
+      document.querySelector(`.error-${input.name}`).classList.remove('error-active');
     }
    
     if(!validate(formValues.title, patterns.title) || !validate(formValues.author, patterns.author) || !validate(formValues.pages, patterns.pages)){
