@@ -51,6 +51,7 @@ function validate(field, regex){
 }
 
 function openForm(){
+  elements.form.style.transition = '0.5s';
   elements.form.style.transform = 'scale(1)';  
   elements.overlay.classList.add('overlay-active');
 }
