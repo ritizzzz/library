@@ -10,7 +10,7 @@ let elements = {
 
 let patterns = {
   title:  /^.{1,500}$/,
-  author: /^\w[\w\ ]{0,20}$/,
+  author: /^[A-Za-z][A-Za-z\,\.\ ]{0,100}$/,
   pages:  /^\d{1,5}$/
 }
 

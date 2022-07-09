@@ -123,6 +123,16 @@ form{
     gap: 5px;
 }
 
+.error{
+    display: none;
+}
+
+.error-active{
+    color: red;
+    font-weight: 570;
+    display: block;
+}
+
 .special{
     flex-direction: row;
     align-items: center;
