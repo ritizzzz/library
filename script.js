@@ -5,11 +5,14 @@ let elements = {
   form: document.querySelector('form'),
   addbook: document.querySelector('.addBook'),
   cardcontainer: document.querySelector('.card-container'),
+  inputs: document.querySelectorAll('input')
 }
 
-elements.openFormButton.addEventListener('click', openForm)
-elements.overlay.addEventListener('click', closeForm)
-elements.addbook.addEventListener('click', addBookToLibrary)
+let patterns = {
+  title:  /^.{1,500}$/,
+  author: /^\w[\w\ ]{0,20}$/,
+  pages:  /^\d{1,5}$/
+}
 
 let formValues = {
   title: document.querySelector('#title'),
@@ -18,9 +21,34 @@ let formValues = {
   read: document.querySelector('#read')
 }
 
+elements.openFormButton.addEventListener('click', openForm)
+elements.overlay.addEventListener('click', closeForm)
+elements.addbook.addEventListener('click', addBookToLibrary)
+
+elements.inputs.forEach(input => {
+
+  input.addEventListener('keyup', ()=>{
+    
+    if(!validate(input, patterns[input.name])){
+      input.style.border = '1px solid red'; 
+    }else{
+      input.style.border = '1px solid #999';
+    }
+   
+    if(!validate(formValues.title, patterns.title) || !validate(formValues.author, patterns.author) || !validate(formValues.pages, patterns.pages)){
+      elements.addbook.disabled = true;
+    }else{
+      elements.addbook.disabled = false;  
+    }
+
+  })
+
+});
 
 
- 
+function validate(field, regex){
+  return regex.test(field.value);
+}
 
 function openForm(){
   elements.form.style.transform = 'scale(1)';  
@@ -34,6 +62,7 @@ function closeForm(){
 
 
 function addBookToLibrary() {
+
   myLibrary.push(new Book(formValues.title.value, formValues.author.value, formValues.pages.value, formValues.read.checked))
   closeForm();
   createCards();
@@ -52,6 +81,7 @@ function removeCard(event){
   event.target.parentNode.remove();
   createCards();
 }
+
 
 function createCards(){
   deleteCards();
