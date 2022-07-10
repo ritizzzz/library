@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <title>Library</title>
 </head>
 <body>
     <header>
@@ -19,7 +19,7 @@
         </div>
 
 
-        <form action="POST" method="#">
+        <form action="#" method="POST">
             <div class="form-row">
                 <label for="title">Title:</label>
                 <input class='input' type="text" name="title" id="title">
@@ -35,7 +35,7 @@
 
             <div class="form-row">
                 <label for="pages">Pages:</label>
-                <input class='input' type="number" id="pages" name="pages">
+                <input class='input' type="number" id="pages" name="pages" min="1" max="99999">
                 <p class="error error-pages">*must only be upto 5 digits</p>
 
             </div>
@@ -45,7 +45,6 @@
                 <input type="checkbox" id="read" name="read">
             </div>
             <div class="form-row">
-                <div class="align-button"></div>
                 <button class="addBook" type="reset" disabled>Submit</button>
             </div>
         </form>

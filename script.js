@@ -3,15 +3,15 @@ let elements = {
   openFormButton: document.querySelector('.openForm'),
   overlay: document.querySelector('.overlay'),
   form: document.querySelector('form'),
-  addbook: document.querySelector('.addBook'),
-  cardcontainer: document.querySelector('.card-container'),
+  addBook: document.querySelector('.addBook'),
+  cardContainer: document.querySelector('.card-container'),
   inputs: document.querySelectorAll('.input')
 }
 
 let patterns = {
   title:  /^.{1,500}$/,
   author: /^[A-Za-z][A-Za-z\,\.\ ]{0,100}$/,
-  pages:  /^\d{1,5}$/
+  pages:  /^0*\d{1,5}$/
 }
 
 let formValues = {
@@ -23,11 +23,11 @@ let formValues = {
 
 elements.openFormButton.addEventListener('click', openForm)
 elements.overlay.addEventListener('click', closeForm)
-elements.addbook.addEventListener('click', addBookToLibrary)
+elements.addBook.addEventListener('click', addBookToLibrary)
 
 elements.inputs.forEach(input => {
 
-  input.addEventListener('keyup', ()=>{
+  input.addEventListener('input', ()=>{
     
     if(!validate(input, patterns[input.name])){
       document.querySelector(`.error-${input.name}`).classList.add('error-active');
@@ -36,9 +36,9 @@ elements.inputs.forEach(input => {
     }
    
     if(!validate(formValues.title, patterns.title) || !validate(formValues.author, patterns.author) || !validate(formValues.pages, patterns.pages)){
-      elements.addbook.disabled = true;
+      elements.addBook.disabled = true;
     }else{
-      elements.addbook.disabled = false;  
+      elements.addBook.disabled = false;  
     }
 
   })
@@ -63,8 +63,9 @@ function closeForm(){
 
 
 function addBookToLibrary() {
+  
 
-  myLibrary.push(new Book(formValues.title.value, formValues.author.value, formValues.pages.value, formValues.read.checked))
+  myLibrary.push(new Book(formValues.title.value, formValues.author.value, formValues.pages.value.toString().replace(/0*/,''), formValues.read.checked))
   closeForm();
   createCards();
 }
@@ -74,7 +75,7 @@ function changeReadStatus(event){
 }
 
 function deleteCards(){
-  elements.cardcontainer.innerHTML = '';
+  elements.cardContainer.innerHTML = '';
 }
 
 function removeCard(event){
@@ -134,7 +135,7 @@ function createCards(){
     button.addEventListener('click', removeCard);
     div.appendChild(button)
 
-    elements.cardcontainer.appendChild(div);
+    elements.cardContainer.appendChild(div);
   }
 }
 
